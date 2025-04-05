@@ -1,0 +1,306 @@
+/* Gallery Layout */
+.gallery-section {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+}
+
+
+.image-id {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #555;
+
+}
+
+.gallery-section h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.gallery-section p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  padding: 0rem 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem 0;
+  padding: 2rem; /* Reduced padding on left and right to bring the grid closer */
+  margin: 0 auto; /* Center the grid within the container */
+  width: 100%; /* Make the grid take up full width */
+  background-color: beige;
+}
+
+.gallery-item {
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  display: flex; /* Center image in the container */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Stack image and ID */
+
+}
+
+.gallery-item img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border: 2.5px solid #5cb9ea;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.1);
+  filter: brightness(0.3) drop-shadow(0 0 5px rgba(168, 160, 160, 0.929));
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item::after {
+  content: 'Tap to View';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  pointer-events: none;
+padding-bottom: 50px;
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+/* Load More Button */
+.load-more-container {
+  text-align: center;
+  margin-top: 2rem; /* Add space above the button */
+}
+
+.load-more-btn {
+  background-color: #ff7f00; /* Orange color */
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.load-more-btn:hover {
+  background-color: #e67e00; /* Darker orange on hover */
+}
+
+/* Modal Popup */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.show {
+  display: flex;
+}
+
+/* Modal Image Zoom Effect */
+.modal-image {
+  width: 100%;
+  max-height: 80vh;
+  border-radius: 10px;
+  object-fit: contain;
+  transition: transform 0.1s ease-in-out;
+  max-width: none; /* Prevent image from being constrained */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1); /* Center image with scale */
+  transform-origin: center center; /* Default zoom origin */
+  cursor: grab; /* Indicate dragging */
+  
+}
+
+/* When zooming, the image stays centered */
+.modal-image.zoomed {
+  transform: translate(-50%, -50%) scale(var(--zoom-level)); /* Maintain centering and scaling */
+  transform-origin: var(--zoom-origin); /* Update to dynamic zoom origin */
+}
+
+/* Modal Image Dragging */
+.modal-image-wrapper {
+  cursor: grab; /* Indicate dragging */
+  width: 100%;
+  height: 100%;
+}
+
+/* When dragging */
+.modal-image-wrapper:active {
+  cursor: grabbing;
+}
+
+/* Modal Actions */
+.modal-actions {
+  position: absolute;
+  right: 10px;
+  top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.zoom-btn, .reset-btn, .download-btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.zoom-btn:hover, .reset-btn:hover, .download-btn:hover {
+  background-color: #555;
+}
+
+.download-btn:hover {
+  background-color: #45a049;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.close-btn:hover {
+  color: #ddd;
+}
+
+/* Arrows for Image Navigation */
+.prev-arrow,
+.next-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.prev-arrow {
+  left: 10px;
+}
+
+.next-arrow {
+  right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-item img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .modal-image {
+    max-height: 60vh; /* Adjust the height for smaller devices */
+  }
+
+  .modal-actions {
+    top: 20px;
+    right: 20px;
+    padding: 30px 0px 0px 0px;
+  }
+
+  .zoom-btn, .reset-btn, .download-btn {
+    font-size: 0.9rem; /* Smaller font size */
+    padding: 0.4rem 0.8rem; /* Smaller padding */
+  }
+
+  .close-btn {
+    font-size: 1.5rem; /* Smaller close button */
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-item img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .gallery-item {
+    padding: 1rem;
+  }
+
+  .gallery-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .gallery-section p {
+    font-size: 0.875rem;
+  }
+
+  .modal-image {
+    max-height: 50vh; /* Further adjust height for very small screens */
+  }
+
+  .modal-actions {
+    top: 10px;
+    right: 10px;
+    padding: 25px 0px 0px 0px;
+  }
+
+  .zoom-btn, .reset-btn, .download-btn {
+    font-size: 9px; /* Further reduce button font size */
+    padding: 0.3rem 0.6rem; /* Further reduce button padding */
+  }
+
+  .close-btn {
+    font-size: 1.2rem; /* Even smaller close button */
+  }
+}
+
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}

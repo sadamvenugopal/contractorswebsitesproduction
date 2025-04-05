@@ -1,0 +1,33 @@
+<section id="pricing">
+  <div class="pricing-intro"> 
+    <h2>Creative and Professional Web Solutions for Your Business</h2>
+    <p> Our team of skilled designers and developers specializes in crafting visually appealing and highly functional websites tailored to your needs. Whether you need an online store, a business website, or something completely unique, we are here to bring your vision to life. In addition to creating stunning designs, we also provide ongoing support and maintenance to keep your site running smoothly. Let’s work together to build a powerful online presence for your brand—reach out to us today! </p> 
+  </div>
+
+  <div class="pricing-container">
+    <div class="pricing-card" *ngFor="let package of packages">
+      <h3>{{ package.title }}</h3>
+      <div class="divider"></div>
+      
+      <h1 class="price">
+        {{ package.price }}
+        <span *ngIf="package.period" ></span>
+        <span *ngIf="package.oldPrice" class="old-price">
+          <del>{{ package.oldPrice }}</del>
+          <span *ngIf="package.period"></span>
+        </span>
+      </h1>
+
+      <p>{{ package.description }}</p>
+      
+      <ul>
+        <li *ngFor="let feature of package.features">
+          {{ feature.title }} 
+        </li>
+      </ul>
+      
+      <button class="buy-btn" (click)="openSignUpFormAndCloseMenu()">Launch</button>
+    </div>
+  </div>
+</section>
+<app-login-signup *ngIf="isSignUpFormVisible" (close)="closeSignUpForm()"></app-login-signup>

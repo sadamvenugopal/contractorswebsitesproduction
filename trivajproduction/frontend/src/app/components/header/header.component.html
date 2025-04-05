@@ -1,0 +1,127 @@
+<!-- Overlay (Hidden by default) -->
+<div class="overlay" *ngIf="isMenuOpen" (click)="closeMenu()"></div>
+
+<header [class.menu-open]="isMenuOpen">
+  <div class="logo">
+    <img src="icons/logo3.png" alt="MyLogo">
+  </div>  <nav class="menu" [ngClass]="{'active': isMenuOpen}">
+    <ul>
+      <li><button (click)="navigateToSection('home')">Home</button></li>
+      <li><button (click)="navigateToSection('services')">Services</button></li>
+      <li><button (click)="navigateToSection('gallery')">designs</button></li>
+      <li><button (click)="navigateToSection('pricing')">Business</button></li>
+      <li><button class="mockup-btn" (click)="openMockupFormAndCloseMenu()">Free Mockup</button></li>
+      </ul>
+  </nav>
+  
+  <!-- Hamburger Icon (turns into close button) -->
+  <div class="hamburger" (click)="toggleMenu()" [ngClass]="{'active': isMenuOpen}">
+    &#9776;
+  </div>
+  
+  
+  <!-- Close Button -->
+  <div class="close-btn" *ngIf="isMenuOpen && windowWidth <= 768" (click)="closeMenu()">&#10005;</div>
+</header>
+
+
+<!-- Home Section -->
+<section id="home" class="home-section">
+  <div class="overlay-content">
+    <h1 class="home-title">
+      Build, Optimize, And Grow: <span class="highlight">The Complete Digital Toolbox For Contractors</span>
+    </h1>
+    <button class="btn get-started-btn" (click)="openSignUpFormAndCloseMenu()">Get Started</button>
+  </div>
+  <!-- Modal for Free Mockup and OTP Verification -->
+  <div class="modal" [ngClass]="{'show': isMockupFormVisible || isOTPVisible}">
+    <div class="modal-content" (click)="$event.stopPropagation()" role="dialog">
+      <span class="close" (click)="closeAllModals()" aria-label="Close Modal">
+        <i class="fa fa-times-circle"></i>
+      </span> 
+      <h2 *ngIf="isMockupFormVisible" id="mockup-form-title">Contact With Us to Avail 
+        <span style="color: #ff6600; font-style: italic; font-weight: bold;">70% Discount</span>
+      </h2>
+      <!-- Mockup Form -->
+      <form *ngIf="isMockupFormVisible" (submit)="submitMockupForm($event)">
+        <div class="input-container">
+          <input type="text" id="name" name="name" required pattern="[a-zA-Z\s]{3,30}" placeholder=" " 
+            title="Name should only contain letters and be 3-30 characters long." />
+          <label for="name">Name *</label>
+        </div>
+        <div class="input-container">
+          <input type="email" id="email" name="email" required pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$" 
+            title="Enter a valid Gmail address (e.g., example@gmail.com)." />
+          <label for="email">Email Address *</label>
+        </div>
+        <div class="input-container">
+          <input type="tel" id="phone" name="phone" required pattern="^(\+91)?\d{10,15}$" placeholder=" " 
+            title="Enter a valid phone number (with or without +91) and 10-15 digits." />
+          <label for="phone">Phone No. *</label>
+        </div>
+        <div class="input-container">
+          <textarea id="description" name="description" required minlength="20" maxlength="500" placeholder=" " 
+            title="Description must be between 20 and 500 characters."></textarea>
+          <label for="description">Enter a brief description *</label>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      <!-- OTP Form -->
+      <div *ngIf="isOTPVisible" class="otp-content">
+        <h2>Enter OTP</h2>
+        <input type="text" [(ngModel)]="enteredOTP" placeholder="Enter OTP" />
+        <button (click)="verifyOTP()">Verify</button>
+      </div>
+    </div>
+  </div>
+</section>
+<app-login-signup *ngIf="isSignUpFormVisible" (close)="closeSignUpForm()"></app-login-signup>
+
+
+<!-- Services Section -->
+<!-- Services Section -->
+<section id="services">
+  <h2>Our Services</h2>
+  <p>
+    Get Ready to Grow Your Contracting Business! At Contractors and Handyman Websites, we're dedicated to helping you succeed in the digital age. Our innovative services are designed to drive real results and take your business to new heights. Let's get started today!
+  </p>
+  
+  <div class="services-container">
+    <!-- Use *ngFor to loop through the services array -->
+    <div class="service-card" *ngFor="let service of services">
+      <div class="service-icon">
+        <img [src]="service.icon" alt="{{ service.title }}" />
+      </div>
+      <h3>{{ service.title }}</h3>
+      <ul class="service-points">
+        <li *ngFor="let point of service.points"><span class="star">-</span> {{ point }}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- gallery Section -->
+<section id="gallery"> <!-- Gallery section is shown only if isPricingVisible is true -->
+  <app-gallery></app-gallery>  <!-- Gallery component -->
+</section>
+
+
+<!-- Pricing Section -->
+<section id="pricing"> <!-- Pricing section is shown only if isPricingVisible is true -->
+  <app-pricing></app-pricing>  <!-- Pricing component -->
+</section>
+
+<section id="footer">
+  <app-footer></app-footer>
+</section>
+
+<!-- <section id="dashboard">
+  <app-clientform></app-clientform>
+</section> -->
+
+
+
+
+

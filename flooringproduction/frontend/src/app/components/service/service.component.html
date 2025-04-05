@@ -1,0 +1,17 @@
+<section class="services-section">
+  <div class="services-container">
+    <h2 class="services-heading">What We Do</h2>
+    
+    <div class="services-grid">
+      <div class="service-card" *ngFor="let service of services; let i = index">
+        <div class="service-image">
+          <img [src]="service.icon" [alt]="service.title" />
+        </div>
+        <div class="service-content">
+          <h3 class="service-title">{{service.title}}</h3>
+          <p class="service-description">{{service.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

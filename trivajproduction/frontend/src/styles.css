@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+/* Floating Action Buttons */
+.floating-buttons {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1000;
+}
+
+.floating-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.floating-button:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-button {
+  background: #25D366;
+}
+
+.zoom-button {
+  background: #2D8CFF;
+}
+
+.button-icon {
+  width: 100%;
+  height: 100%;
+
+}
+
+/* Tooltip on hover */
+.floating-button::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: 70px;
+  white-space: nowrap;
+  background: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.floating-button:hover::after {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .floating-buttons {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .floating-button {
+    width: 50px;
+    height: 50px;
+  font-size: 24px;
+  }
+  
+  .floating-button::after {
+    font-size: 12px;
+    right: 60px;
+  }
+}
+
+    .no-scroll {
+      overflow: hidden;
+      height: 100%;
+    }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

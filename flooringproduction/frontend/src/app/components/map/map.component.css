@@ -1,0 +1,57 @@
+.map-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 500px;
+  margin: 2rem 0;
+}
+
+.map-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.map-info {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.view-on-google {
+  display: inline-block;
+  margin-top: 10px;
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.view-on-google:hover {
+  text-decoration: underline;
+}
+
+/* Fix for Leaflet's default icon paths */
+.leaflet-default-icon-path {
+  background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png);
+}
+
+@media (min-width: 768px) {
+  .map-container {
+    flex-direction: row;
+    height: 400px;
+  }
+  
+  .map-frame {
+    flex: 2;
+  }
+  
+  .map-info {
+    flex: 1;
+    margin-top: 0;
+    margin-left: 1rem;
+  }
+}

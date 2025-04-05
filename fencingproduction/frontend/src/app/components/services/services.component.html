@@ -1,0 +1,19 @@
+<section id="services">
+    <h2>Our Services</h2>
+    <p>
+      Elevate Your Outdoor Spaces with Expert Fencing Solutions! At Fencing Contractor, we're dedicated to helping you create beautiful, secure, and functional fences. Our services are designed to exceed your expectations and enhance your property. Let's get started today!
+    </p>
+    
+    <div class="services-container">
+      <!-- Use *ngFor to loop through the services array -->
+      <div class="service-card" *ngFor="let service of services">
+        <div class="service-icon">
+          <img [src]="service.icon" alt="{{ service.title }}" />
+        </div>
+        <h3>{{ service.title }}</h3>
+        <ul class="service-points">
+          <li *ngFor="let point of service.points"><span class="star">-</span> {{ point }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>

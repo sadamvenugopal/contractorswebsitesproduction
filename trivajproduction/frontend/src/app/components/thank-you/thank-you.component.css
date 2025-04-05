@@ -1,0 +1,33 @@
+.thank-you-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #f4f4f4;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    color: #333;
+  }
+  
+  p {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+  
+  a {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  a:hover {
+    background-color: #0056b3;
+  }
+  

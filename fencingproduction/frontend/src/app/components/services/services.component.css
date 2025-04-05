@@ -1,0 +1,146 @@
+/* Services Section */
+#services {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  margin-top: 20px;
+}
+
+#services h2 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+#services p {
+  font-size: 18px;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/* Services Container */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+  margin-top: 2rem;
+}
+
+/* Service Card */
+.service-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Service Icon */
+.service-icon img {
+  width: 125px;
+  height: 125px;
+  margin-bottom: 1rem;
+}
+
+/* Service Title */
+.service-card h3 {
+  font-size: 22px;
+  color: #ff6600;
+  margin-bottom: 1rem;
+}
+
+/* Service Points */
+.service-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.service-points li {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-points .star {
+  color: #ff6600;
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  #services {
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #services h2 {
+    font-size: 32px;
+  }
+
+  #services p {
+    font-size: 16px;
+  }
+
+  .services-container {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+
+  .service-card h3 {
+    font-size: 20px;
+  }
+
+  .service-points li {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  #services {
+    padding: 4rem 1rem;
+  }
+
+  #services h2 {
+    font-size: 28px;
+  }
+
+  #services p {
+    font-size: 14px;
+  }
+
+  .service-card {
+    padding: 1.2rem;
+  }
+
+  .service-card h3 {
+    font-size: 18px;
+  }
+
+  .service-icon img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .service-points li {
+    font-size: 13px;
+  }
+}

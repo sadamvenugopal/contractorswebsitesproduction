@@ -1,0 +1,36 @@
+<div class="hero-section">
+    <div class="slideshow-container">
+      <div *ngFor="let image of images; let i = index" 
+           class="slide" 
+           [class.active]="i === currentSlide">
+        <img [src]="image.url" [alt]="image.alt">
+        <div class="slide-caption">
+          <h2>{{image.title}}</h2>
+          <p>{{image.description}}</p>
+        </div>
+      </div>
+      
+      <button class="slide-nav prev" (click)="prevSlide()" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/>
+        </svg>
+      </button>
+      <button class="slide-nav next" (click)="nextSlide()" aria-label="Next slide">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="dots-container">
+      <div class="dots">
+        <button *ngFor="let image of images; let i = index" 
+                [class.active]="i === currentSlide"
+                (click)="goToSlide(i)"
+                [attr.aria-label]="'Go to slide ' + (i + 1)">
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  

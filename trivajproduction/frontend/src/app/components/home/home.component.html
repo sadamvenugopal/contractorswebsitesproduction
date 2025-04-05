@@ -1,0 +1,116 @@
+<nav>
+  <div class="navbar">
+    <h1>Home</h1>
+    <div class="profile-icon" (click)="toggleProfileDropdown()">
+      <i class="fa-solid fa-user"></i>
+    </div>
+  </div>
+
+  <div *ngIf="showDropdown" class="profile-dropdown">
+    <p><strong>Name:</strong> {{ user?.name }}</p>
+    <p><strong>Email:</strong> {{ user?.email}}</p>
+    <button (click)="logout()" class="logout-button">Logout</button>
+  </div>
+</nav>
+
+<div class="container">
+  <h2>Welcome to the Home Page</h2>
+  <!-- <button (click)="logout()" class="logout-button">Logout</button> -->
+
+  <p>
+    Thank you for choosing contractorsandhandimanwebsite.com. We need basic information to provide a final quote to your team.
+    Please fill in the following details. Someone from our team will reach out to you.
+  </p>
+
+  <div class="form-container"> <!-- New class for form -->
+    <form [formGroup]="homeForm" (submit)="submitFinalForm()">
+      <div>
+        <label for="businessName">Business Name:</label>
+        <input type="text" id="businessName" formControlName="businessName" required />
+        <div *ngIf="homeForm.get('businessName')?.invalid && homeForm.get('businessName')?.touched" class="error">
+          Business Name is required.
+        </div>
+      </div>
+
+      <div>
+        <label for="contactPerson">Contact Person:</label>
+        <input type="text" id="contactPerson" formControlName="contactPerson" required />
+        <div *ngIf="homeForm.get('contactPerson')?.invalid && homeForm.get('contactPerson')?.touched" class="error">
+          Contact Person is required.
+        </div>
+      </div>
+
+      <div>
+        <label for="mobile">Mobile:</label>
+        <input type="tel" id="mobile" formControlName="mobile" required />
+        <div *ngIf="homeForm.get('mobile')?.invalid && homeForm.get('mobile')?.touched" class="error">
+          Mobile number must be 10 digits.
+        </div>
+      </div>
+
+      <div>
+        <label for="businessEmail">Business Email:</label>
+        <input type="email" id="businessEmail" formControlName="businessEmail" required />
+        <div *ngIf="homeForm.get('businessEmail')?.invalid && homeForm.get('businessEmail')?.touched" class="error">
+          Valid Business Email is required.
+        </div>
+      </div>
+
+      <div>
+        <label for="officePhone">Office Phone:</label>
+        <input type="tel" id="officePhone" formControlName="officePhone" />
+      </div>
+
+      <div>
+        <label for="contactEmail">Contact Email:</label>
+        <input type="email" id="contactEmail" formControlName="contactEmail" required />
+        <div *ngIf="homeForm.get('contactEmail')?.invalid && homeForm.get('contactEmail')?.touched" class="error">
+          Valid Contact Email is required.
+        </div>
+      </div>
+
+      <div>
+        <label for="address">Address:</label>
+        <textarea id="address" formControlName="address" required></textarea>
+        <div *ngIf="homeForm.get('address')?.invalid && homeForm.get('address')?.touched" class="error">
+          Address is required.
+        </div>
+      </div>
+
+      <div>
+        <label for="bundleSelection">Website Bundle Selection:</label>
+        <select id="bundleSelection" formControlName="bundleSelection" (change)="updatePrice()" required>
+          <option value="startup">Startup Bundle</option>
+          <option value="eliteCorporate">Elite Corporate Bundle</option>
+          <option value="highEndBusiness">High-End Business Solution</option>
+          <option value="eStoreWebdesign">E-Store Web Design Bundle</option>
+          <option value="advanceEcommerce">Advanced E-Commerce Package</option>
+          <option value="advancedBusiness">Advanced Business Plan</option>
+          <option value="customWebPortal">Custom Web Portal Solution</option>
+          <option value="customOnlineStore">Custom Online Store</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="price">Price:</label>
+        <input type="text" id="price" formControlName="price" [value]="price" readonly />
+      </div>
+
+      <div>
+        <label for="howSoon">How Soon Do You Need the Website?</label>
+        <input type="text" id="howSoon" formControlName="howSoon" required placeholder="Enter a date or timeframe" />
+        <div *ngIf="homeForm.get('howSoon')?.invalid && homeForm.get('howSoon')?.touched" class="error">
+          Please enter a date or timeframe.
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Submitting...' : 'Submit' }}
+      </button>
+
+      <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+      <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    </form>
+  </div>
+</div>
+

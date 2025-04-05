@@ -1,0 +1,237 @@
+/* Pricing Section Padding */
+/* Apply premium fonts */
+:host {
+  font-family: 'Poppins', sans-serif;
+}
+
+#pricing {
+    font-family: 'Poppins', sans-serif;
+    padding: 2rem 1rem;
+    background-color: #f9f9f9; /* Light background for better contrast */
+  }
+  
+  /* Pricing Intro */
+  .pricing-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .pricing-intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+  }
+  
+  .pricing-intro p {
+    font-size: 1rem;
+    color: #666;
+    max-width: 75%;
+    margin: 0 auto;
+  }
+  
+  
+  /* Divider Line */
+  .divider {
+    height: 2px; /* Thickness of the line */
+    background-color: #333; /* Dark color for the line */
+    margin: 1rem 0; /* Spacing around the line */
+  }
+  .pricing-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Dynamic, evenly spaced cards */
+    gap: 1rem;
+    margin: 0 auto;
+    max-width: 1300px;
+    padding: 0 1rem;
+    align-items: stretch; /* Ensure cards are equal height */
+  }
+  
+  /* Pricing Card */
+  .pricing-card {
+    background-color: rgba(65, 150, 165, 0.32); /* Clean white background */
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    text-align: left; /* left alignment for a clean design */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .pricing-card:hover {
+    transform: translateY(-5px); /* Subtle lift on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border: 2px solid #ff0000;
+  }
+  
+  .pricing-card h3 {
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 1rem;
+
+  }
+  
+  .pricing-card .price {
+    font-family:monospace;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #c4180a;
+    margin-bottom: 1rem;
+  }
+  
+  .pricing-card p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight:bold;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+  
+  
+  /* Pricing Card Features List */
+  .pricing-card ul {
+    list-style-type: none;
+    padding: 10px; /* Adds padding to the ul element */
+    margin-bottom: 1.5rem;
+    max-height: 200px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #44828d #a9c5bf4f;
+    background-color: #a9c5bf4f;
+  
+  }
+  
+  /* Scrollbar styles for Webkit browsers */
+  .pricing-card ul::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .pricing-card ul::-webkit-scrollbar-thumb {
+    background-color: #44828d;
+    border-radius: 10px;
+  }
+  
+  .pricing-card ul::-webkit-scrollbar-track {
+    background-color: #f0f7fb;
+  }
+  
+  .pricing-card li {
+    font-size: 12px;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-family: "Poppins", sans-serif;
+    font-weight:lighter; /* Force the lighter weight */
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+
+
+  
+  .pricing-card li::before {
+    content: "👷"; /* Checkmark for features */
+    color: #0073e6;
+  }
+  
+  .price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #0073e6;
+    margin-bottom: 1rem;
+  }
+
+  .old-price {
+    color: #9f8b8bac; /* Light gray color */
+    text-decoration: line-through; /* Strikethrough effect */
+    margin-right: 8px; /* Space between old price and current price */
+    font-size: 18px; /* Slightly smaller font size */
+    padding-left: 20px;
+  }
+  
+  .price .period {
+    font-size: 16px;
+    color: #666;
+    margin-left: 0;
+}
+  /* Buttons */
+  .buy-btn {
+    background-color: rgb(255, 165, 0);
+    color: white;
+    padding: 12px 100px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block; /* Ensures it spans full width for centering */
+    margin: 1rem auto; /* Centers the button */
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+
+  }
+  
+  .buy-btn:hover {
+    background-color:  rgb(207, 173, 112);
+  }
+  
+  .learn-more-btn{
+    
+    color: black;
+    text-decoration: none;
+    display: inline-block; /* Ensures it's inline */
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+  
+  .learn-more-btn:hover {
+    color: #e65c00;
+    text-decoration: underline; /* Underline on hover */
+   cursor: pointer;
+  }
+  
+  
+  /* Responsive Adjustments */
+  
+  /* Mobile (up to 480px) */
+  @media (max-width: 480px) {
+    .pricing-container {
+      grid-template-columns: 1fr; /* Single column on mobile */
+    }
+  
+    .pricing-card {
+      padding: 1.5rem;
+    }
+  
+    .pricing-card h3 {
+      font-size: 1.4rem;
+    }
+  
+    .pricing-card .price {
+      font-size: 1.3rem;
+    }
+  }
+  
+  /* Tablet (481px to 768px) */
+  @media (min-width: 481px) and (max-width: 768px) {
+    .pricing-container {
+      grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
+    }
+  
+    .pricing-card {
+      padding: 1.8rem;
+    }
+  }
+  
+  /* Laptop (769px to 1024px) */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .pricing-container {
+      grid-template-columns: repeat(3, 1fr); /* Three columns for laptops */
+    }
+  }
+  
+  /* Large Screens (1025px and up) */
+  @media (min-width: 1025px) {
+    .pricing-container {
+      grid-template-columns: repeat(4, 1fr); /* Four columns for large screens */
+    }
+  }
+  

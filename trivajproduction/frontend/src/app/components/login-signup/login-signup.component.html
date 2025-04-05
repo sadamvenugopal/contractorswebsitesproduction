@@ -1,0 +1,93 @@
+<!-- login-signup.component.html -->
+
+<div class="login-modal" 
+     [ngClass]="{'show': isSignUpFormVisible || isLoginFormVisible || isForgotPasswordFormVisible}" 
+     (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="close" (click)="closeModal()">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <!-- Sign-Up Form -->
+    <div *ngIf="isSignUpFormVisible">
+      <h2>Sign Up</h2>
+      <form [formGroup]="signUpForm" (submit)="submitSignUpForm($event)">
+        <div class="input-container">
+          <input id="name" type="text" formControlName="name" placeholder=" " required />
+          <label for="name">Name *</label>
+          <small *ngIf="signUpForm.controls['name'].invalid && signUpForm.controls['name'].touched">Name is required.</small>
+        </div>
+        <div class="input-container">
+          <input id="email" type="email" formControlName="email" placeholder=" " required />
+          <label for="email">Email Address *</label>
+          <small *ngIf="signUpForm.controls['email'].invalid && signUpForm.controls['email'].touched">Enter a valid email.</small>
+        </div>
+        <div class="input-container">
+          <input id="phone" type="tel" formControlName="phone" placeholder=" " required />
+          <label for="phone">Phone Number *</label>
+          <small *ngIf="signUpForm.controls['phone'].invalid && signUpForm.controls['phone'].touched">Enter a valid 10-digit phone number.</small>
+        </div>
+        <div class="input-container">
+          <input id="password" type="password" formControlName="password" placeholder=" " required />
+          <label for="password">Password *</label>
+          <small *ngIf="signUpForm.controls['password'].invalid && signUpForm.controls['password'].touched">Password must be at least 6 characters.</small>
+        </div>
+        <div class="input-container">
+          <input id="confirmPassword" type="password" formControlName="confirmPassword" placeholder=" " required />
+          <label for="confirmPassword">Confirm Password *</label>
+          <small *ngIf="signUpForm.controls['confirmPassword'].invalid && signUpForm.controls['confirmPassword'].touched">Passwords must match.</small>
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
+      <!-- Social Buttons for Google and Facebook -->
+      <div class="social-buttons-container">
+        <button class="social-btn google-btn" (click)="googleLogin()">
+          <img src="icons/google.png" alt="Google Icon" class="social-icon" />
+        </button>
+        <button class="social-btn facebook-btn" (click)="facebookLogin()">
+          <img src="icons/facebook.png" alt="Facebook Icon" class="social-icon" />
+        </button>
+      </div>
+      <p class="login-link">
+        Already have an account? <a href="#" (click)="openLoginForm()">Login here</a>
+      </p>
+    </div>
+    <!-- Login Form -->
+    <div *ngIf="isLoginFormVisible">
+      <h2>Login</h2>
+      <form [formGroup]="loginForm" (submit)="submitLoginForm($event)">
+        <div class="input-container">
+          <input id="loginEmail" type="email" formControlName="email" placeholder=" " required />
+          <label for="loginEmail">Email Address *</label>
+        </div>
+        <div class="input-container">
+          <input id="loginPassword" type="password" formControlName="password" placeholder=" " required />
+          <label for="loginPassword">Password *</label>
+        </div>
+        <button type="submit">Login</button>
+      </form>
+      <p class="forgot-password-link">
+        <a href="#" (click)="openForgotPasswordForm()">Forgot Password?</a>
+      </p>
+      <p class="signup-link">
+        Don't have an account? <a href="#" (click)="openSignUpForm()">Sign up here</a>
+      </p>
+    </div>
+    <!-- Forgot Password Form -->
+    <div *ngIf="isForgotPasswordFormVisible">
+      <h2>Forgot Password</h2>
+      <form [formGroup]="forgotPasswordForm" (submit)="submitForgotPasswordForm($event)">
+        <div class="input-container">
+          <input id="forgotEmail" type="email" formControlName="email" placeholder=" " required />
+          <label for="forgotEmail">Email Address *</label>
+        </div>
+        <button type="submit" [disabled]="forgotPasswordForm.invalid">Reset Password</button>
+      </form>
+      <p class="login-link">
+        Remember your password? <a href="#" (click)="openLoginForm()">Login here</a>
+      </p>
+      <p class="signup-link">
+        Don't have an account? <a href="#" (click)="openSignUpForm()">Sign up here</a>
+      </p>
+    </div>
+  </div>
+</div>

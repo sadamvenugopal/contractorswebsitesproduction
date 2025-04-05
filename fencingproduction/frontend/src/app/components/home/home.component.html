@@ -1,0 +1,20 @@
+<!-- Home Section -->
+<div>
+  <section id="home" class="home-section">
+    <div class="overlay-content" [ngClass]="{'show-content': isContentVisible}">
+      <h1 class="home-title">
+        Transform Your Space: <span class="highlight">Expert Fencing Solutions.</span>
+      </h1>
+      <!-- <button class="btn get-started-btn" (click)="openSignUpFormAndCloseMenu()">Get Started</button> -->
+     <!-- Contact Info Slider -->
+  
+
+    </div>
+    <div class="contact-slider">
+      <div class="contact-slide" *ngFor="let contact of contactDetails; let i = index" [class.active]="i === activeSlide">
+        <h2>{{ contact.title }}</h2>
+        <p><strong>{{ contact.icon }} {{ contact.label }}:</strong> {{ contact.value }}</p>
+      </div>
+    </div>
+  </section>
+</div>

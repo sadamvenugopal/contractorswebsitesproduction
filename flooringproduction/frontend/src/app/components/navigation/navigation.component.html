@@ -1,0 +1,26 @@
+<nav class="main-nav">
+    <div class="nav-container">
+      <a class="nav-brand" [routerLink]="['/home']" fragment="home">Guest App</a>
+      
+      <button class="nav-toggle" type="button" (click)="isCollapsed = !isCollapsed">
+        <span class="toggle-icon"></span>
+      </button>
+      
+      <div class="nav-menu" [class.show]="!isCollapsed">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/home']" fragment="home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/services']" fragment="services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/about']" fragment="about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/home']" fragment="footer">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

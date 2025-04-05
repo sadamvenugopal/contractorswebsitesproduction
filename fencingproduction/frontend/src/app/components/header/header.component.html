@@ -1,0 +1,56 @@
+<!-- Overlay (Hidden by default) -->
+<div class="overlay" *ngIf="isMenuOpen && windowWidth <= 768" (click)="closeMenu()"></div>
+
+<header [class.menu-open]="isMenuOpen">
+    <div class="logo">
+        <img src="icons/logo3.png" alt="Fencing Contractor Logo">
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="menu" [ngClass]="{'active': isMenuOpen || windowWidth > 768}">
+        <ul>
+            <li><a (click)="navigateTo('/guest/home')">Home</a></li>
+            <li><a (click)="navigateTo('/guest/services')">Services</a></li>
+            <li><a (click)="navigateTo('/guest/gallery')">Gallery</a></li>
+            <li><button class="mockup-btn" (click)="toggleMockupForm()">Book Now</button></li>
+        </ul>
+    </nav>
+
+  <!-- Hamburger Icon (Only visible when menu is closed on mobile) -->
+<div class="hamburger" *ngIf="!isMenuOpen && windowWidth <= 768" (click)="toggleMenu()">
+  &#9776;
+</div>
+
+<!-- Close Button (Only visible when menu is open on mobile) -->
+<div class="close-btn" *ngIf="isMenuOpen && windowWidth <= 768" (click)="closeMenu()">
+  &#10005;
+</div>
+
+</header>
+
+<!-- Mockup Form Overlay -->
+<div class="mockup-overlay" *ngIf="isMockupOpen" (click)="toggleMockupForm()">
+    <div class="mockup-form" (click)="$event.stopPropagation()">
+        <h2>Request an Appointment</h2>
+        <form (submit)="submitMockupForm($event)">
+          <label for="name">Name:</label>
+          <input type="text" id="name" [(ngModel)]="mockupData.name" name="name" required />
+      
+          <label for="email">Email:</label>
+          <input type="email" id="email" [(ngModel)]="mockupData.email" name="email" required />
+      
+          <label for="phone">Phone:</label>
+          <input type="phone" id="phone" [(ngModel)]="mockupData.phone" name="phone" required />
+      
+          <label for="date">Select a Date:</label>
+            <input type="date" id="date" [(ngModel)]="mockupData.date" name="date" [attr.min]="minDate" required />
+      
+          <label for="requirements">Requirements:</label>
+          <textarea id="requirements" [(ngModel)]="mockupData.requirements" name="requirements"></textarea>
+      
+          <button type="submit">Submit</button>
+          <button type="button" (click)="toggleMockupForm()">Close</button>
+      </form>
+      
+    </div>
+</div>

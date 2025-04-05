@@ -1,0 +1,58 @@
+<section class="gallery-section">
+  <h2>Work that makes us proud and happy</h2>
+  <p>These projects are a testament to our success in providing digital solutions for design and marketing.</p>
+
+  <div class="gallery-grid">
+    <div class="gallery-item" *ngFor="let image of images" (click)="openModal(image)">
+      <img 
+        [attr.src]="image.src" 
+        [attr.alt]="image.alt" 
+        (error)="handleImageError(image)" 
+        [attr.data-src]="image.src" 
+        class="lazy-image" 
+        loading="lazy"
+        (contextmenu)="preventContextMenu($event)" />
+      <div class="image-overlay" (click)="openModal(image)" (contextmenu)="preventContextMenu($event)">
+        <p class="image-id">{{ image.id }}</p> <!-- Display the ID below the image -->
+
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- Load More Button -->
+  <!-- <div class="load-more-container">
+    <button class="load-more-btn">Load More</button>
+  </div> -->
+
+  <!-- Modal for Image Zooming and Dragging -->
+  <div class="modal" [ngClass]="{ 'show': isModalOpen }" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()" tabindex="-1">
+      <span class="close-btn" (click)="closeModal()" aria-label="Close">&times;</span>
+
+      <!-- Arrows for image navigation -->
+      <button class="prev-arrow" (click)="previousImage()" aria-label="Previous Image">&#10094;</button>
+      <button class="next-arrow" (click)="nextImage()" aria-label="Next Image">&#10095;</button>
+
+      <!-- Modal Image Wrapper -->
+      <div class="modal-image-wrapper"
+           [ngStyle]="getImageStyle()"
+           (mousedown)="onMouseDown($event)"
+           (mouseup)="onMouseUp()"
+           (mousemove)="onMouseMove($event)">
+           <img 
+           [src]="selectedImage?.src"
+           [alt]="selectedImage?.alt" 
+           class="modal-image"
+           [style.transform]="'scale(' + zoomLevel + ')'"
+           [style.transform-origin]="'center center'" 
+           (dblclick)="zoomOnDoubleClick($event)"
+           (contextmenu)="preventContextMenu($event)" />
+         
+      </div>
+ 
+      <p class="modal-caption">{{ selectedImage?.alt }}</p>
+    </div>
+  </div>
+</section>
+

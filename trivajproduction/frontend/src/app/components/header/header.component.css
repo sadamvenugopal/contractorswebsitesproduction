@@ -1,0 +1,720 @@
+/* Overlay Style */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Black Gradient */
+    display: none;
+    z-index: 999;
+  }
+  
+  /* Base Styles */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px 0px 30px;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    background-color:#5996B0;
+    color: inherit; /* Inherits the text color from the parent */
+  }
+  
+  
+  .logo img {
+    width: 70px;
+    height: 70px ;  /* Adjust this value to match the button height */
+  }
+  
+  .menu ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu ul li button {
+    background-color: #FFA500;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu ul li button:hover {
+    background-color: #CC8400;
+  }
+  
+  nav.menu ul li .mockup-btn {
+    background-color: #baba6c;
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  nav.menu ul li .mockup-btn:hover {
+    background-color: #BABAA4;
+  }
+  
+  .home-button {
+    font-family: "Courier New, Courier, monospace";
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #FFA500;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+  
+  .home-button:hover {
+    background-color: #CC8400;
+  }
+  
+  .menu {
+  
+    z-index: 1000; /* Ensure it's above other elements */
+    
+  }
+  
+  .menu.active {
+    display: flex; /* Show menu when active */
+  }
+  
+  /* Free Mockup Popup Modal */
+  .modal {
+    position: absolute;
+    top: 0;
+    bottom: 50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0; /* Start hidden */
+    pointer-events: none; /* Prevent interaction when hidden */
+    transition: opacity 0.5s ease-in-out;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  
+  
+  .modal-content {
+    background-color: white;
+    position: relative;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: left;
+    width: 275px;
+    height: auto;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+    transform: translateY(-30px); /* Slide up when hidden */
+    transition: transform 0.3s ease-in-out;
+    opacity: 0; /* Hidden state */
+  }
+  
+  .modal.show {
+    opacity: 1; /* Fully visible */
+    pointer-events:painted; /* Allow interaction */
+  }
+  
+  .modal.show .modal-content {
+    transform: translateY(0); /* Slide down */
+    opacity: 1; /* Fully visible */
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333333;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  
+  .modal-content label {
+    font-size: 13px;
+    color: #999999; /* Light gray color for labels */
+    margin-bottom: 5px;
+    display: block;
+    font-weight: bold;
+  }
+  
+  
+  /* Input and Textarea styles */
+  .input-container {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  
+  .input-container input,
+  .input-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 13px;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+    transition: padding 0.2s ease-in-out, font-size 0.2s ease-in-out;
+  }
+  
+  .input-container label {
+    color: #999; /* Light color for label */
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    font-size: 13px;
+    transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
+    pointer-events: none;
+    background-color: white;
+    padding: 0 5px;
+  }
+  
+  /* Floating label effect */
+  .input-container input:focus,
+  .input-container textarea:focus,
+  .input-container input:not(:placeholder-shown),
+  .input-container textarea:not(:placeholder-shown) {
+    padding-top: 20px; /* Adjust padding when focused */
+    color: #666; /* Color change when active */
+  
+  }
+  
+  .input-container input:focus + label,
+  .input-container textarea:focus + label,
+  .input-container input:not(:placeholder-shown) + label,
+  .input-container textarea:not(:placeholder-shown) + label {
+    top: -10px; /* Move label up */
+    font-size: 12px; /* Reduce font size */
+    color: #065763; /* Change label color when focused */
+  }
+  
+  .input-container textarea {
+    height: 80px; /* Adjust height for textarea */
+  }
+  
+  /* Button styling */
+  .modal-content button {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Adds spacing above the button */
+    align-self: center; /* Center the button horizontally */
+    margin: 0px 70px; /* Center the button horizontally */
+  
+  }
+  
+  .modal-content button:hover {
+    background-color: #e65c00;
+  }
+  
+  /* OTP Content Styling */
+.otp-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.otp-content h2 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #333333;
+  font-weight: bold;
+  text-align: center;
+}
+
+.otp-content input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  box-sizing: border-box;
+  transition: padding 0.2s ease-in-out, font-size 0.2s ease-in-out;
+}
+
+.otp-content button {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+  margin-top: 20px; /* Adds spacing above the button */
+  align-self: center; /* Center the button horizontally */
+}
+
+.otp-content button:hover {
+  background-color: #e65c00;
+}
+
+  /* Close button */
+  .modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px; /* Increase size */
+    color: #ff3300;  /* Red color for 'wrong' icon */  color: #333;
+    cursor: pointer;
+  }
+  
+  .modal-content .close:hover {
+    color: #ff1a1a; /* Darker red on hover */
+  }
+  
+  .modal-content .close i {
+    font-size: 30px; /* Larger icon size */
+  }
+  
+  /* Hamburger menu */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+  }
+  
+  /* Hide hamburger when menu is open */
+  .hamburger.active {
+    display: none; /* Hide the hamburger when active */
+  }
+  
+  /* Close button style */
+  .close-btn {
+    font-size: 30px;
+    color: white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above the menu */
+  }
+  
+  /* Home Section */
+  .home-section {
+    position: relative;
+    height: 100vh;
+    background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), /* Black gradient overlay */
+    url('/home.jpg');   background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align content to the left */
+    padding-left: 2rem; /* Add padding to avoid content sticking to the edge */  color: white;
+    text-align: center;
+  }
+  
+  .overlay-content {
+    /* background-color: rgba(0, 0, 0, 0.6); Semi-transparent overlay */
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 400px; /* Optional: Limit the width of the overlay */
+    text-align: left; /* Align text to the left */
+    position: absolute; /* Enable positioning */
+    top: 10px; /* Adjust this value to move the overlay down */
+    bottom: auto; /* Adjust this value to move the overlay up */
+    left: 2rem; /* Distance from the left */
+    right: auto; /* Optional: Adjust this value if needed */
+    transform: translateY(0); /* Optional: Fine-tune vertical alignment */
+  
+  }
+  
+  .home-title {
+    font-family:'Anek Devanagari';
+    font-size: 2.0rem;
+    font-weight: bold;
+    line-height: 1.4;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-align: left; /* Align title text to the left */
+  
+  }
+  
+  .highlight {
+    color: #8AFDA8; /* Green for emphasis */
+  }
+  
+  .home-description {
+    font-family: "Georgia, serif";
+    font-size: 1.2rem;
+    color: #ddd;
+    margin-bottom: 2rem;
+  }
+  
+
+  .get-started-btn {
+    padding: 12px 24px;
+    background-color: #ff7206;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .get-started-btn:hover {
+    background-color: #f58e40;
+    transform: scale(1.05);
+  }
+  
+
+  
+  @media (max-width: 768px) {
+    .home-title {
+      font-size: 2rem;
+    }
+  
+    .home-description {
+      font-size: 1rem;
+    }
+  
+    .home-button {
+      font-size: 0.9rem;
+    }
+  
+    .home-section {
+      justify-content: center; /* Center content on smaller screens */
+      padding: 0;
+    }
+  
+    .overlay-content {
+      max-width: 90%; /* Ensure the overlay doesn't extend beyond the viewport */
+    }
+  
+  
+    .overlay-content {
+    /* background-color: rgba(0, 0, 0, 0.6); Semi-transparent overlay */
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 400px; /* Optional: Limit the width of the overlay */
+    text-align: left; /* Align text to the left */
+    position: absolute; /* Enable positioning */
+    top: 10px; /* Adjust this value to move the overlay down */
+    bottom: auto; /* Adjust this value to move the overlay up */
+    left: 2rem; /* Distance from the left */
+    right: auto; /* Optional: Adjust this value if needed */
+    transform: translateY(0); /* Optional: Fine-tune vertical alignment */
+  
+  }
+  
+  
+  }
+  @media (max-width: 767px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem;
+    }
+  
+    .logo {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+  
+    .menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0; /* Align menu to the right */
+      padding: 1rem;
+      text-align: center;
+      width: 100px;
+      background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+    }
+  
+    /* Show menu when active */
+    .menu.active {
+      display: block; /* Show the menu when it's active */
+      animation: slideIn 0.3s ease-out;
+      width: 8rem;
+      border-radius: 0px 0px 0px 50px;
+    }
+  
+    /* Hamburger Icon Styling */
+    .hamburger {
+      display: block;
+      cursor: pointer;
+      font-size: 2rem;
+      color: white;
+      position: absolute;
+      top: 40%;
+      right: 20px;
+      transform: translateY(-50%);
+      z-index: 1000; /* Ensure hamburger is above other elements */
+    }
+  
+    .menu ul {
+      display: block;
+    }
+  
+    .menu ul li {
+      margin: 1rem 0;
+    }
+  }
+  
+  /* Section Image Styles */
+  img.section-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+  }
+  
+  #home, #about, #pricing {
+    padding: 0rem;
+    text-align: center;
+  }
+  
+  
+ /* Services Section */
+#services {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.1em;
+  color: #666;
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+.services-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.service-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 320px;
+  text-align: left;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-icon img {
+  width: 250px;
+  height: 250px;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: 1.4em;
+  color: #222;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Points Container */
+.points-container {
+  background: #fff7e6; /* Light orange background */
+  padding: 15px;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.service-points li {
+  font-size: 1em;
+  color: #444;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  color: #ff9800;
+  font-size: 1.2em;
+  margin-right: 8px;
+}
+
+  @media (max-width: 768px) {
+    .services-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .service-card {
+      width: 80%;
+      margin-bottom: 2rem;
+    }
+  
+    h2 {
+      font-size: 2rem;
+    }
+  
+    
+  }
+  
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 1.8rem;
+    }
+  
+    .service-card {
+      width: 90%;
+    }
+  
+    .service-icon img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .services-container {
+      display: flex;
+      justify-content: space-around; /* Same as large laptops */
+      flex-wrap: nowrap;
+      gap: 2rem; /* Ensure spacing is consistent */
+    }
+  
+    .service-card {
+      width: 220px; /* Match the width used on larger screens */
+      padding: 2rem; /* Maintain consistent padding */
+    }
+  
+    .service-icon img {
+      width: 100px; /* Same icon size as desktop */
+      height: 100px;
+    }
+  
+    h2 {
+      font-size: 2.5rem; /* Keep heading size consistent */
+    }
+  
+    p {
+      font-size: 1rem; /* Ensure the text size remains readable */
+    }
+  }
+  
+  
+  /* Menu Animation */
+  @keyframes slideIn {
+    from {
+      right: -250px; /* Start off-screen */
+    }
+    to {
+      right: 0; /* End in position */
+    }
+  }
+  
+
+  /* Style the phone input container */
+.phone-input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.phone-input-wrapper select {
+  padding: 12px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 120px; /* Adjust width for a cleaner look */
+  background-color: #fff;
+  font-size: 14px;
+  appearance: none; /* Remove default dropdown styles */
+}
+
+.phone-input-wrapper input {
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  flex: 1; /* Fill the remaining space */
+  background-color: #fff;
+  font-size: 14px;
+}
+
+.input-container {
+  margin-bottom: 15px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Add hover and focus effects for input and select */
+.phone-input-wrapper select:hover,
+.phone-input-wrapper input:hover {
+  border-color: #0056b3;
+}
+
+.phone-input-wrapper select:focus,
+.phone-input-wrapper input:focus {
+  border-color: #0056b3;
+  outline: none;
+}

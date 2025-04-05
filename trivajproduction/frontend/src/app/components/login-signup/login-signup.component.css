@@ -1,0 +1,208 @@
+/* Modal container */
+.login-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensures it appears above other content */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  /* Show modal */
+  .login-modal.show {
+    opacity: 1;
+   
+  }
+  
+  /* Modal content */
+  .modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 350px;
+    padding: 30px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    animation: slide-up 0.5s ease-out;
+  }
+  
+  /* Center the title */
+  .modal-content h2 {
+    text-align: center;  /* Center align the text */
+    font-size: 24px;     /* Adjust the font size as needed */
+    margin-bottom: 20px; /* Add some space below the title */
+  }
+  
+  
+  /* Close button */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ff6600;
+  }
+  
+  .close i {
+    font-size: 24px;
+  }
+  
+  /* Slide up animation */
+  @keyframes slide-up {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Form input styles */
+  .input-container {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .input-container input,
+  .input-container textarea {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .input-container input:focus,
+  .input-container textarea:focus {
+    border-color: #ff6600;
+  }
+  
+  /* Label styles */
+  .input-container label {
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #999;
+    margin-bottom: 5px;
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    background-color: white;
+    padding: 0 5px;
+    transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
+    pointer-events: none;
+  }
+  
+  /* Floating label effect */
+  .input-container input:focus + label,
+  .input-container textarea:focus + label,
+  .input-container input:not(:placeholder-shown) + label,
+  .input-container textarea:not(:placeholder-shown) + label {
+    top: -10px;
+    font-size: 12px;
+    color: #065763;
+  }
+  
+  /* Button styles */
+  button[type="submit"] {
+    background-color: #ff6600;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #e65c00;
+  }
+  
+  /* Container for social buttons */
+  .social-buttons-container {
+    display: flex; /* Use flexbox to display buttons side by side */
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center; /* Align the buttons vertically */
+    gap: 15px; /* Add space between buttons */
+    margin-top: 20px; /* Optional: Add some space above the buttons */
+  }
+  
+  /* Social button styles */
+  .social-btn {
+    display: flex; /* Use flexbox to align content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: 60px; /* Set a consistent width for the buttons */
+    height: 60px; /* Set a consistent height for the buttons */
+    padding: 0;
+    border: none;
+    border-radius: 50%; /* Make the buttons circular */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #f1f1f1; /* Initial background color */
+  }
+  
+  /* Google button specific styles */
+  .google-btn:hover {
+    background-color: #9feb98; /* Hover background color for Google */
+  }
+  
+  /* Facebook button specific styles */
+  .facebook-btn:hover {
+    background-color: #8db1ff; /* Hover background color for Facebook */
+  }
+  
+  /* Social icon styles */
+  .social-icon {
+    width: 30px; /* Icon width */
+    height: 30px; /* Icon height */
+    transition: transform 0.3s ease; /* Smooth transform for hover */
+  }
+  
+  /* Icon hover effect */
+  .social-btn:hover .social-icon {
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+  }
+  
+  
+  /* Login link */
+  .login-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .login-link a {
+    color: #ff6600;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease; /* Smooth transition for underline */
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  /* Signup link */
+  .signup-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .signup-link a {
+    color: #ff6600;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease; /* Smooth transition for underline */
+  }
+  
+  .signup-link a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  

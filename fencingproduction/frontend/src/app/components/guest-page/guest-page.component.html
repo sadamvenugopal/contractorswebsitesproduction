@@ -1,0 +1,14 @@
+<app-header></app-header>
+
+<!-- Show all components initially -->
+<ng-container *ngIf="showAllComponents">
+  <app-home></app-home>
+  <app-services></app-services>
+  <app-gallery></app-gallery>
+</ng-container>
+
+<!-- Show only one component based on navigation -->
+<app-services *ngIf="!showAllComponents && currentUrl.includes('/guest/services')"></app-services>
+<app-gallery *ngIf="!showAllComponents && currentUrl.includes('/guest/gallery')"></app-gallery>
+
+<app-footer></app-footer>

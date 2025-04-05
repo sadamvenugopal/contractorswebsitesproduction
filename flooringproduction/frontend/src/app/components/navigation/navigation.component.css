@@ -1,0 +1,185 @@
+/* Modern CSS Navigation - No Bootstrap */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #2c3e50;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+  }
+  
+  .nav-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-brand:hover {
+    opacity: 0.8;
+  }
+  
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  
+  .toggle-icon {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .toggle-icon::before,
+  .toggle-icon::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .toggle-icon::before {
+    top: -8px;
+  }
+  
+  .toggle-icon::after {
+    bottom: -8px;
+  }
+  
+  .nav-menu {
+    display: flex;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-list {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: white;
+  }
+  
+  .nav-link.router-link-active {
+    color: white;
+    font-weight: 600;
+  }
+  
+  .nav-link.router-link-active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #3498db;
+    border-radius: 2px;
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: block;
+    }
+  
+    .nav-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #34495e;
+      flex-direction: column;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      max-height: 0;
+      overflow: hidden;
+      align-items: center;
+    }
+  
+    .nav-menu.show {
+      max-height: 500px;
+    }
+  
+    .nav-list {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .nav-item {
+      padding: 0.5rem 0;
+    }
+  
+    .nav-toggle.active .toggle-icon {
+      background-color: transparent;
+    }
+  
+    .nav-toggle.active .toggle-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+  
+    .nav-toggle.active .toggle-icon::after {
+      transform: rotate(-45deg);
+      bottom: 0;
+    }
+  }
+  
+  /* Desktop Hover Effects */
+  @media (min-width: 769px) {
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #3498db;
+      transition: width 0.3s ease;
+    }
+  
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  
+    .nav-link.router-link-active::after {
+      width: 100%;
+    }
+  }

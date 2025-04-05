@@ -1,0 +1,165 @@
+/* Ensure full height and no margin on body */
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+}
+
+.profile-icon {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Basic container style for centering */
+.container {
+  width: 100%;
+  max-width: 100%; /* Limit the max width of the container */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+/* Heading styles */
+h2 {
+  color: #333;
+  margin-bottom: 20px; /* Add margin to space out the header */
+}
+
+/* Logout button */
+button.logout-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Paragraph text styling */
+p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* New form container class */
+.form-container {
+  width: 100%;
+  max-width: 600px; /* Ensure the form does not exceed the container width */
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid #007bff; /* Add outline (border) */
+  border-radius: 8px;
+}
+
+/* Form styling */
+form {
+  display: grid;
+  gap: 15px;
+  margin-top: 20px;
+  width: 100%; /* Make form elements span the container width */
+}
+
+/* Label styling */
+label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+/* Input, select, and textarea styling */
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+/* Focused input styling */
+input:focus, select:focus, textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Textarea styling */
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Submit button styling */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for submit button */
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Focused button styling */
+button:focus {
+  outline: none;
+}
+
+
+.error{
+color: #f44336;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  button {
+    width: 100%;
+  }
+}

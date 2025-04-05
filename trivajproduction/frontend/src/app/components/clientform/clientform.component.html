@@ -1,0 +1,132 @@
+<div class="parent-wrapper">
+
+<div class="container">
+    <h2>Web Design Project Questionnaire</h2>
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+        <section>
+            <h3>1. Business Overview</h3>
+            <label>Business Name: <input formControlName="businessName" type="text"></label>
+            <label>Business Description: <textarea formControlName="businessDescription"></textarea></label>
+            <label>Target Audience: <input formControlName="targetAudience" type="text"></label>
+        </section>
+        
+        <section>
+            <h3>2. Purpose of the Website</h3>
+            <label>Main Goal: <input formControlName="mainGoal" type="text"></label>
+            <label>Sell Products Online? 
+                <select formControlName="sellProducts">
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+            </label>
+            <label>Visitor Actions: <input formControlName="visitorActions" type="text"></label>
+        </section>
+        
+        <section>
+            <h3>3. Design Preferences</h3>
+            <label>Brand Style Guide: <input formControlName="brandStyle" type="text"></label>
+            <label>Preferred Websites: <input formControlName="preferredWebsites" type="text"></label>
+            <label>Design Preferences: <input formControlName="designPreferences" type="text"></label>
+            <label>Selected design from gallery section <input formControlName="selectDesign" type="text"></label>
+
+            <label>Layout: 
+                <select formControlName="layout">
+                    <option>Single Page</option>
+                    <option>Multi Page</option>
+                    <option>Blog Format</option>
+                </select>
+            </label>
+        </section>
+        
+        <section>
+            <h3>4. Content</h3>
+            <label>Content Type: <input formControlName="contentType" type="text"></label>
+            <label>Content Ready? <input formControlName="contentReady" type="text"></label>
+            <label>Need Help with Content? <input formControlName="contentHelp" type="text"></label>
+            <label>High-Quality Images Available? <input formControlName="highQualityImages" type="text"></label>
+        </section>
+        
+        <section>
+            <h3>5. Functionality & Features</h3>
+            <label>Required Features: <input formControlName="requiredFeatures" type="text"></label>
+            <label>Integrations Needed: <input formControlName="integrationsNeeded" type="text"></label>
+            <label>Special Functionality: 
+                <select formControlName="specialFunctionality">
+                    <option>No</option>
+                    <option>Yes</option>
+                </select>
+            </label>
+        </section>
+        
+        <section>
+            <h3>6. SEO and Analytics</h3>
+            <label>SEO Optimization: 
+                <select formControlName="seoOptimization">
+                    <option>No</option>
+                    <option>Yes</option>
+                </select>
+            </label>
+            <label>Google Analytics Needed? 
+                <select formControlName="googleAnalytics">
+                    <option>No</option>
+                    <option>Yes</option>
+                </select>
+            </label>
+        </section>
+        
+        <section>
+            <h3>7. Hosting and Domain</h3>
+            <label>Domain Name: <input formControlName="domainName" type="text"></label>
+            <label>Hosting Recommendations Needed? 
+                <select formControlName="hostingRecommendations">
+                    <option>No</option>
+                    <option>Yes</option>
+                </select>
+            </label>
+            <label>Preferred CMS: <input formControlName="preferredCMS" type="text"></label>
+        </section>
+        
+        <section>
+            <h3>8. Timeline and Budget</h3>
+            <label>Expected Timeline: <input formControlName="timeline" type="text"></label>
+            <label>Budget: <input formControlName="budget" type="text"></label>
+        </section>
+        
+        <section>
+            <h3>9. Maintenance</h3>
+            <label>Ongoing Maintenance Needed? 
+                <select formControlName="ongoingMaintenance">
+                    <option>No</option>
+                    <option>Yes</option>
+                </select>
+            </label>
+            <label>Support for Future Updates? 
+                <select formControlName="futureUpdates">
+                    <option>No</option>
+                    <option>Yes</option>
+                </select>
+            </label>
+        </section>
+        
+        <section>
+            <h3>10. Competitors and Market</h3>
+            <label>Main Competitors: <input formControlName="competitors" type="text"></label>
+            <label>Differentiation: <input formControlName="differentiation" type="text"></label>
+        </section>
+        
+        <section>
+            <h3>11. Personal Details</h3>
+            <label>Name: <input formControlName="name" type="text"></label>
+            <label>Email: <input formControlName="email" type="email"></label>
+            <label>Phone: <input formControlName="phone" type="text"></label>
+            <label>Additional Notes: <textarea formControlName="description"></textarea></label>
+        </section>
+
+        <!-- Success and error messages -->
+        <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+        <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+        
+        <button type="submit" [disabled]="isSubmitting">Submit</button>
+    </form>
+</div>
+</div>

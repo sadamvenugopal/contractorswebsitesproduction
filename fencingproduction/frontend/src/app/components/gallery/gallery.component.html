@@ -1,0 +1,29 @@
+<section class="gallery-section">
+  <h2>Fencing & Decking That Elevates Your Space</h2>
+  <p>Strong, stylish, and built to last—our projects redefine outdoor living with expert craftsmanship.</p>
+
+  <div class="gallery-grid">
+    <img *ngFor="let image of images; let i = index"
+         [src]="image.src"
+         [alt]="image.alt"
+         (click)="openLightbox(i)">
+  </div>
+</section>
+
+<!-- Lightbox Popup -->
+<div class="lightbox" *ngIf="isLightboxOpen" (click)="closeLightbox()">
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <button class="prev" (click)="prevImage()">&#10094;</button>
+    
+    <!-- Image with Double Tap Event -->
+    <img [src]="images[currentImageIndex].src"
+    [alt]="images[currentImageIndex].alt"
+    (touchstart)="handleDoubleTap($event)"
+    (dblclick)="toggleZoom()"
+    [class.zoomed]="isZoomed">
+    
+    <button class="next" (click)="nextImage()">&#10095;</button>
+    <button class="close" (click)="closeLightbox()">✖</button>
+  </div>
+</div>
+

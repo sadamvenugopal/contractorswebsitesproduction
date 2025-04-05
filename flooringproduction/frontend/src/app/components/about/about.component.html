@@ -1,0 +1,43 @@
+<!-- about.component.html -->
+<section class="about-section">
+    <div class="about-container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About Our Company</h2>
+          <p>Founded in 2010, we've been delivering exceptional digital solutions to clients worldwide.</p>
+          <p>Our team of experts brings together diverse skills and experiences to create innovative products.</p>
+          <ul class="about-stats">
+            <li><strong>50+</strong> Happy Clients</li>
+            <li><strong>100+</strong> Projects Completed</li>
+            <li><strong>24/7</strong> Support</li>
+          </ul>
+        </div>
+        <div class="about-image">
+          <img src="/slide2.png" alt="Our Team">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="reviews-section">
+    <div class="reviews-container">
+      <h2>Customer Reviews</h2>
+      <div class="reviews-grid">
+        <div class="review-card" *ngFor="let review of customerReviews">
+          <div class="review">
+            <img [src]="review.image" [alt]="review.name">
+            <div class="review-info">
+              <h3>{{ review.name }}</h3>
+              <p>{{ review.text }}</p>
+              <div class="rating">
+                <span *ngFor="let star of [1,2,3,4,5]; let i = index">
+                  <i class="fas fa-star" [class.filled]="i < review.rating"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
