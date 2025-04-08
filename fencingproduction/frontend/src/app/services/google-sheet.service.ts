@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class GoogleSheetService {
-  private backendUrl = `${environment.backendUrl}/api/booknow/`;
+  private backendUrl = `${environment.backendUrl}/api/booknow`;
 
   constructor(private http: HttpClient) {}
 
