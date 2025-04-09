@@ -6,13 +6,13 @@ require("dotenv").config(); // Load environment variables
 const router = express.Router();
 
 // Load API credentials
-const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
-const GOOGLE_API_CREDENTIALS = JSON.parse(fs.readFileSync("credentials.json"));
+const SPREADSHEET_ID = process.env.SPREADSHEET_ID_FNG; // Updated variable name
+const GOOGLE_API_CREDENTIALS = JSON.parse(fs.readFileSync(process.env.GOOGLE_APPLICATION_CREDENTIALS_FNG)); // Updated variable name
 
 // Load SendGrid credentials
-const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
-const ADMIN_NOTIFICATION_EMAIL = process.env.ADMIN_NOTIFICATION_EMAIL;
-const SYSTEM_SENDER_EMAIL = process.env.SYSTEM_SENDER_EMAIL;
+const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY_FNG; // Updated variable name
+const ADMIN_NOTIFICATION_EMAIL = process.env.ADMIN_NOTIFICATION_EMAIL_FNG; // Updated variable name
+const SYSTEM_SENDER_EMAIL = process.env.SYSTEM_SENDER_EMAIL_FNG; // Updated variable name
 
 // Set SendGrid API key
 sgMail.setApiKey(SENDGRID_API_KEY);
