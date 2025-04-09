@@ -6,20 +6,20 @@ require("dotenv").config(); // Load environment variables
 const router = express.Router();
 
 // Load API credentials
-const SPREADSHEET_ID = process.env.SPREADSHEET_ID_FNG; // Updated variable name
-const GOOGLE_API_CREDENTIALS = JSON.parse(fs.readFileSync(process.env.GOOGLE_APPLICATION_CREDENTIALS_FNG)); // Updated variable name
+const SPREADSHEET_ID_FNG = process.env.SPREADSHEET_ID_FNG; // Updated variable name
+const GOOGLE_APPLICATION_CREDENTIALS_FNG = JSON.parse(fs.readFileSync(process.env.GOOGLE_APPLICATION_CREDENTIALS_FNG)); // Updated variable name
 
 // Load SendGrid credentials
-const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY_FNG; // Updated variable name
-const ADMIN_NOTIFICATION_EMAIL = process.env.ADMIN_NOTIFICATION_EMAIL_FNG; // Updated variable name
-const SYSTEM_SENDER_EMAIL = process.env.SYSTEM_SENDER_EMAIL_FNG; // Updated variable name
+const SENDGRID_API_KEY_FNG = process.env.SENDGRID_API_KEY_FNG; // Updated variable name
+const ADMIN_NOTIFICATION_EMAIL_FNG = process.env.ADMIN_NOTIFICATION_EMAIL_FNG; // Updated variable name
+const SYSTEM_SENDER_EMAIL_FNG = process.env.SYSTEM_SENDER_EMAIL_FNG; // Updated variable name
 
 // Set SendGrid API key
-sgMail.setApiKey(SENDGRID_API_KEY);
+sgMail.setApiKey(SENDGRID_API_KEY_FNG);
 
 async function initializeGoogleSheets() {
     const auth = new google.auth.GoogleAuth({
-        credentials: GOOGLE_API_CREDENTIALS,
+        credentials: GOOGLE_APPLICATION_CREDENTIALS_FNG,
         scopes: ["https://www.googleapis.com/auth/spreadsheets"],
     });
     return google.sheets({ version: "v4", auth });
@@ -34,7 +34,7 @@ router.post("/submit-booking", async (req, res) => {
 
         // Fetch existing emails from Google Sheets
         const response = await sheets.spreadsheets.values.get({
-            spreadsheetId: SPREADSHEET_ID,
+            spreadsheetId: SPREADSHEET_ID_FNG,
             range: "Bookings!B:B", // Column B (Emails)
         });
 
@@ -55,7 +55,7 @@ router.post("/submit-booking", async (req, res) => {
         ]];
 
         await sheets.spreadsheets.values.append({
-            spreadsheetId: SPREADSHEET_ID,
+            spreadsheetId: SPREADSHEET_ID_FNG,
             range: "Bookings!A:E", // Adjust based on the number of fields
             valueInputOption: "RAW",
             insertDataOption: "INSERT_ROWS",
@@ -64,8 +64,8 @@ router.post("/submit-booking", async (req, res) => {
 
         // ✅ Send Email Notification
         const adminNotificationEmail = {
-            to: ADMIN_NOTIFICATION_EMAIL,
-            from: SYSTEM_SENDER_EMAIL,
+            to: ADMIN_NOTIFICATION_EMAIL_FNG,
+            from: SYSTEM_SENDER_EMAIL_FNG,
             subject: "New Booking Submission",
             text: `
                 A new booking has been submitted:
@@ -79,7 +79,7 @@ router.post("/submit-booking", async (req, res) => {
 
         const userConfirmationEmail = {
             to: bookingDetails.email, // Send to user who submitted the form
-            from: SYSTEM_SENDER_EMAIL,
+            from: SYSTEM_SENDER_EMAIL_FNG,
             subject: "Booking Confirmation",
             text: `
                 Thank you for your booking, ${bookingDetails.name}!
